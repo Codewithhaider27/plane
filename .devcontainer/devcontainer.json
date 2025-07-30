@@ -1,0 +1,48 @@
+{
+  "name": "Plane Project Management",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "forwardPorts": [
+    3000,
+    8000,
+    80,
+    5432,
+    6379
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Plane Web App",
+      "onAutoForward": "openBrowser"
+    },
+    "8000": {
+      "label": "Plane Admin",
+      "onAutoForward": "ignore"
+    },
+    "80": {
+      "label": "Plane Proxy",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "remoteUser": "codespace"
+}
